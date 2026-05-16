@@ -1,11 +1,11 @@
 declare module 'knex/types/tables' {
 	export interface Tables {
-		transactions: {
-			id: string;
-			title: string;
-			amount: number;
-			created_at: string;
-			session_id?: string;
+		users: {
+			usr_id: string;
+			usr_name: string;
+			usr_document: string;
+			usr_session_id?: string;
+			usr_created_at: string;
 		};
 	}
 }

@@ -1,23 +1,6 @@
-import Fastify from 'fastify';
-import {
-	serializerCompiler,
-	validatorCompiler,
-	type ZodTypeProvider,
-} from 'fastify-type-provider-zod';
+import { app } from './app.ts';
+import { env } from './env/index.ts';
 
-const app = Fastify({
-	requestTimeout: 300_000,
-	connectionTimeout: 300_000,
-}).withTypeProvider<ZodTypeProvider>();
-
-// Fastify zod configuration
-app.setSerializerCompiler(serializerCompiler);
-app.setValidatorCompiler(validatorCompiler);
-
-app.get('/', () => {
-	console.log('Hello World');
-});
-
-app.listen({ port: 3333, host: '0.0.0.0' }, () => {
-	console.log('HTTP server is running on 3333');
+app.listen({ port: env.PORT }).then(() => {
+	console.log('HTTP Server Running');
 });
