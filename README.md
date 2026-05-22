@@ -12,7 +12,6 @@ API REST construída com Fastify, TypeScript, Knex e SQLite como parte do segund
 - **[@fastify/swagger](https://github.com/fastify/fastify-swagger)** — Geração automática da especificação OpenAPI
 - **[@fastify/swagger-ui](https://github.com/fastify/fastify-swagger-ui)** — Interface interativa da documentação (Swagger UI)
 - **[Vitest](https://vitest.dev/)** — Testes automatizados
-- **[Biome](https://biomejs.dev/)** — Linter e formatter
 - **[pnpm](https://pnpm.io/)** — Gerenciador de pacotes
 
 ## Pré-requisitos
