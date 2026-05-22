@@ -10,7 +10,6 @@ API REST construída com Fastify, TypeScript, Knex e SQLite como parte do segund
 - **[SQLite](https://www.sqlite.org/)** — Banco de dados (ambiente de desenvolvimento e testes)
 - **[Zod](https://zod.dev/)** — Validação de schemas e variáveis de ambiente
 - **[Vitest](https://vitest.dev/)** — Testes automatizados
-- **[Biome](https://biomejs.dev/)** — Linter e formatter
 - **[pnpm](https://pnpm.io/)** — Gerenciador de pacotes
 
 ## Pré-requisitos
