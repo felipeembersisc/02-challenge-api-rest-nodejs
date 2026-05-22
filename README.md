@@ -9,6 +9,8 @@ API REST construída com Fastify, TypeScript, Knex e SQLite como parte do segund
 - **[Knex](https://knexjs.org/)** — Query builder e migrations
 - **[SQLite](https://www.sqlite.org/)** — Banco de dados (ambiente de desenvolvimento e testes)
 - **[Zod](https://zod.dev/)** — Validação de schemas e variáveis de ambiente
+- **[@fastify/swagger](https://github.com/fastify/fastify-swagger)** — Geração automática da especificação OpenAPI
+- **[@fastify/swagger-ui](https://github.com/fastify/fastify-swagger-ui)** — Interface interativa da documentação (Swagger UI)
 - **[Vitest](https://vitest.dev/)** — Testes automatizados
 - **[Biome](https://biomejs.dev/)** — Linter e formatter
 - **[pnpm](https://pnpm.io/)** — Gerenciador de pacotes
@@ -82,6 +84,8 @@ node build/server.js
 ```
 
 O servidor estará disponível em `http://localhost:3333`.
+
+A documentação interativa da API (Swagger UI) estará acessível em `http://localhost:3333/docs`.
 
 ## Testes
 
