@@ -42,7 +42,7 @@ Edite o `.env` com os valores desejados:
 ```env
 NODE_ENV="development"
 DATABASE_CLIENT="sqlite"
-DATABASE_URL="./db/app.db"
+DATABASE_URL="./src/database/app.db"
 ```
 
 | Variável          | Descrição                                | Valores aceitos              | Padrão        |
