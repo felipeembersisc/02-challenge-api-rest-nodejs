@@ -7,11 +7,10 @@ API REST construída com Fastify, TypeScript, Knex e SQLite como parte do segund
 - **[Fastify](https://fastify.dev/)** — Framework web de alta performance
 - **[TypeScript](https://www.typescriptlang.org/)** — Tipagem estática
 - **[Knex](https://knexjs.org/)** — Query builder e migrations
-- **[SQLite](https://www.sqlite.org/)** — Banco de dados (ambiente de desenvolvimento e testes)
+- **[SQLite](https://www.sqlite.org/)** — Banco de dados em desenvolvimento
 - **[Zod](https://zod.dev/)** — Validação de schemas e variáveis de ambiente
 - **[@fastify/swagger](https://github.com/fastify/fastify-swagger)** — Geração automática da especificação OpenAPI
 - **[@fastify/swagger-ui](https://github.com/fastify/fastify-swagger-ui)** — Interface interativa da documentação (Swagger UI)
-- **[Vitest](https://vitest.dev/)** — Testes automatizados
 - **[pnpm](https://pnpm.io/)** — Gerenciador de pacotes
 
 ## Pré-requisitos
@@ -47,12 +46,10 @@ DATABASE_URL="./db/app.db"
 
 | Variável          | Descrição                                | Valores aceitos              | Padrão        |
 |-------------------|------------------------------------------|------------------------------|---------------|
-| `NODE_ENV`        | Ambiente de execução                     | `development`, `test`, `production` | `production` |
+| `NODE_ENV`        | Ambiente de execução                     | `development`, `production` | `production` |
 | `DATABASE_CLIENT` | Driver do banco de dados                 | `sqlite`, `pg`               | —             |
 | `DATABASE_URL`    | Caminho ou connection string do banco    | qualquer string              | —             |
 | `PORT`            | Porta em que o servidor vai escutar      | número                       | `3333`        |
-
-> Para testes, as variáveis são carregadas automaticamente do arquivo `.env.test`.
 
 ## Migrations
 
@@ -86,16 +83,6 @@ O servidor estará disponível em `http://localhost:3333`.
 
 A documentação interativa da API (Swagger UI) estará acessível em `http://localhost:3333/docs`.
 
-## Testes
-
-```bash
-# Rodar todos os testes
-pnpm test
-
-# Rodar em modo watch
-pnpm test --watch
-```
-
 ## Lint
 
 ```bash
@@ -108,16 +95,29 @@ pnpm lint
 ```
 ├── src/
 │   ├── @types/
-│   │   └── knex.d.ts       # Tipagem das tabelas do Knex
-│   ├── env/
-│   │   └── index.ts        # Validação das variáveis de ambiente com Zod
-│   ├── database.ts         # Configuração e instância do Knex
-│   └── server.ts           # Entry point do servidor Fastify
-├── db/
-│   └── migrations/         # Arquivos de migration do banco de dados
-├── .env.example            # Template das variáveis de ambiente
-├── .env.test               # Variáveis de ambiente para testes
-├── knexfile.ts             # Configuração do Knex CLI
-├── biome.json              # Configuração do Biome (lint/format)
-└── tsconfig.json           # Configuração do TypeScript
+│   │   └── knex.d.ts                         # Tipagem das tabelas do Knex
+│   ├── config/
+│   │   └── env.ts                            # Validação das variáveis de ambiente com Zod
+│   ├── controllers/
+│   │   └── users.controller.ts               # Handlers HTTP dos usuários
+│   ├── database/
+│   │   └── migrations/
+│   │       └── 20260424030018_create_users.ts # Migration da tabela users
+│   ├── middlewares/
+│   │   └── ensure-session.middleware.ts       # Validação do cookie de sessão
+│   ├── routes/
+│   │   └── users.ts                          # Registro de rotas e schemas Swagger
+│   ├── schemas/
+│   │   ├── response.schema.ts                # Schemas de resposta reutilizáveis
+│   │   └── user.schema.ts                    # Schema de criação de usuário
+│   ├── services/
+│   │   └── users.service.ts                  # Lógica de negócio dos usuários
+│   ├── utils/
+│   │   └── index.ts                          # Utilitários (normalização de CPF)
+│   ├── app.ts                                # Configuração do Fastify
+│   ├── database.ts                           # Configuração e instância do Knex
+│   └── server.ts                             # Entry point do servidor
+├── .env.example                              # Template das variáveis de ambiente
+├── knexfile.ts                               # Configuração do Knex CLI
+└── tsconfig.json                             # Configuração do TypeScript
 ```
