@@ -7,12 +7,10 @@ import {
 } from "../services/users.service.ts";
 
 export async function createUserController(
-  request: FastifyRequest<{ Body: CreateUserInput }>,
+  req: FastifyRequest<{ Body: CreateUserInput }>,
   reply: FastifyReply,
 ) {
-  const { name, document } = request.body;
-
-  let { sessionId } = request.cookies;
+  let { sessionId } = req.cookies;
 
   if (!sessionId) {
     sessionId = randomUUID();
@@ -23,19 +21,19 @@ export async function createUserController(
   }
 
   try {
-    await createUser({ name, document, sessionId });
+    const userCreated = await createUser({...req.body, sessionId});
 
     return reply.status(201).send({
       error: false,
-      data: null,
+      data: userCreated,
       message: "User created successfully",
     });
-  } catch (err) {
-    if (err instanceof UserAlreadyExistsError) {
+  } catch (e:any) {
+    if (e instanceof UserAlreadyExistsError) {
       return reply.code(409).send({
         error: true,
         data: null,
-        message: err.message,
+        message: e.message,
       });
     }
 

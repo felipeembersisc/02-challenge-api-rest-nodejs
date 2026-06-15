@@ -145,3 +145,5 @@ db/*.db
 
 # Build
 build
+
+.idea

@@ -1,3 +1,3 @@
-export function normalizeCpf(cpf: string): string {
-  return cpf.replace(/\D/g, "");
+export function normalizeString(str: string): string {
+  return str.replace(/\D/g, "");
 }
