@@ -8,13 +8,12 @@
       "ESNext.Collection",
       "ESNext.Iterator"
     ],
-    "module": "nodenext",
+    "module": "esnext",
     "target": "es2022",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node16",
-    "allowImportingTsExtensions": true,
+    "moduleResolution": "bundler",
     "noEmit": true
   }
 }

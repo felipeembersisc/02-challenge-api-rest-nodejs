@@ -1,3 +1,3 @@
-import { config } from "./src/database.ts";
+import { config } from './src/infrastructure/database/knexClient'
 
-export default config;
+export default config
